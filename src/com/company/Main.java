@@ -10,8 +10,12 @@ public class Main {
     public static int[] heroesDamage = {20, 15, 25};
 
     public static String heroMedic = "Medic";
-    public static int medicHealth = 500;
+    public static int medicHealth = 300;
     public static int medicDamage = 0;
+
+    public static String heroGolem = "Golem";
+    public static int golemHealth = 800;
+    public static int golemDamage = 5;
 
 
     public static String bossName = "Shao Kahn";
@@ -31,8 +35,6 @@ public class Main {
         while (!isGameFinished()){
         round();
         }
-
-
     }
 
         public static boolean isGameFinished(){
@@ -94,10 +96,12 @@ public class Main {
                             bossHealth = bossHealth - heroesDamage[i];
 
                         }
-                        if(heroesHealth[i] < 100 && heroesHealth[i] > 0 && bossHealth > 0){
+                        if(heroesHealth[i] < 100 && heroesHealth[i] > 0 && bossHealth > 0 && medicHealth > 0){
                             if(heroForHealing == heroesNames[i]) {
-                                heroesHealth[i] = heroesHealth[i] + coeffHeal;
-                                System.out.println("Medic healed " + heroForHealing + " + " + coeffHeal);
+                                //if(medicHealth > 0) {
+                                    heroesHealth[i] = heroesHealth[i] + coeffHeal;
+                                    System.out.println("Medic healed " + heroForHealing + " + " + coeffHeal);
+                                //}
                             }
                         }
                     }
@@ -106,6 +110,9 @@ public class Main {
                     }
                     if (bossHealth < 0){
                         bossHealth = 0;
+                    }
+                    if (medicHealth < 0){
+                        medicHealth = 0;
                     }
                 }
             }
